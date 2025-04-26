@@ -14,9 +14,9 @@ python -m unittest tests. unittests
 
 ## Current State
 
-> Current: 7.
+> Current: 8. Antialiasing (Ray Tracing In One Weekend)
 
-> Upcoming: 8. Antialiasing (Ray Tracing In One Weekend)
+> Upcoming: 9. Diffuse Materials (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
 
