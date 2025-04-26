@@ -6,7 +6,7 @@ python main.py [filename]
 ```
 `filename` is optional (the default is `img`) and the file format is always `.ppm`.
 
-## Unittests
+## Unit Tests
 
 ```bash
 python -m unittest tests. unittests
@@ -19,3 +19,7 @@ python -m unittest tests. unittests
 > Upcoming: 6.8. An Interval Class (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
+
+## Renders
+
+Inside the `renders` directory, there are all renders from the book, made by Raychel. As mentioned above, the file format is `.ppm`.
