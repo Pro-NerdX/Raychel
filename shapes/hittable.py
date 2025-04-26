@@ -48,10 +48,10 @@ class HittableList(Hittable):
     def hit(self, ray: Ray, ray_t: Interval, rec: HitRecord) -> bool:
         temp_rec = HitRecord()
         hit_anything = False
-        closest_so_far = ray_t.max
+        closest_so_far = ray_t.max_val
 
         for object in self.objects:
-            if object.hit(ray, Interval(ray_t.min, closest_so_far), temp_rec):
+            if object.hit(ray, Interval(ray_t.min_val, closest_so_far), temp_rec):
                 hit_anything = True
                 closest_so_far = temp_rec.t
                 rec.t = temp_rec.t
