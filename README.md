@@ -16,6 +16,6 @@ python -m unittest tests. unittests
 
 > Current: 6.7
 
-> Upcomming: 6.8. An Interval Class (Ray Tracing In One Weekend)
+> Upcoming: 6.8. An Interval Class (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
