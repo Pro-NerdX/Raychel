@@ -1,0 +1,60 @@
+from typing import List
+
+from utils.ray import Ray
+from utils.vec3 import Vec3
+
+class HitRecord:
+
+    def __init__(self, p = Vec3(), normal = Vec3(), t = 0.0, front_face = False):
+        self.p = p
+        self.normal = normal
+        self.t = t
+        self.front_face = front_face
+    
+    # 
+    def set_face_normal(self, ray: Ray, outward_normal: Vec3):
+        """
+        Sets the hit record normal vector.
+        NOTE the parameter `outward_normal` is assumed to have unit length.
+        """
+        front_face = ray.dir.dot(outward_normal) < 0
+        if (front_face):
+            self.normal = outward_normal
+        else:
+            self.normal = outward_normal * -1
+
+class Hittable:
+    
+    def hit(self, ray: Ray, ray_tmin: float, ray_tmax: float, rec: HitRecord) -> bool:
+        raise NotImplementedError
+    
+class HittableList(Hittable):
+    """
+    A list of Hittable objects. Implements the Hittable interface itself,
+    so a HittableList can be treated as a single Hittable entity.
+    """
+    def __init__(self, object: Hittable = None):
+        self.objects: List[Hittable] = []
+        if object:
+            self.add(object)
+
+    def clear(self):
+        self.objects.clear()
+    
+    def add(self, object: Hittable):
+        self.objects.append(object)
+    
+    def hit(self, ray: Ray, ray_tmin: float, ray_tmax: float, rec: HitRecord) -> bool:
+        temp_rec = HitRecord()
+        hit_anything = False
+        closest_so_far = ray_tmax
+
+        for obj in self.objects:
+            if obj.hit(ray, ray_tmin, closest_so_far, temp_rec):
+                hit_anything = True
+                closest_so_far = temp_rec.t
+                rec.t = temp_rec.t
+                rec.p = temp_rec.p
+                rec.normal = temp_rec.normal
+        
+        return hit_anything
