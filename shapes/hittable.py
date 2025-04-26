@@ -1,5 +1,6 @@
 from typing import List
 
+from utils.interval import Interval
 from utils.ray import Ray
 from utils.vec3 import Vec3
 
@@ -25,7 +26,7 @@ class HitRecord:
 
 class Hittable:
     
-    def hit(self, ray: Ray, ray_tmin: float, ray_tmax: float, rec: HitRecord) -> bool:
+    def hit(self, ray: Ray, ray_t: Interval, rec: HitRecord) -> bool:
         raise NotImplementedError
     
 class HittableList(Hittable):
@@ -44,13 +45,13 @@ class HittableList(Hittable):
     def add(self, object: Hittable):
         self.objects.append(object)
     
-    def hit(self, ray: Ray, ray_tmin: float, ray_tmax: float, rec: HitRecord) -> bool:
+    def hit(self, ray: Ray, ray_t: Interval, rec: HitRecord) -> bool:
         temp_rec = HitRecord()
         hit_anything = False
-        closest_so_far = ray_tmax
+        closest_so_far = ray_t.max
 
-        for obj in self.objects:
-            if obj.hit(ray, ray_tmin, closest_so_far, temp_rec):
+        for object in self.objects:
+            if object.hit(ray, Interval(ray_t.min, closest_so_far), temp_rec):
                 hit_anything = True
                 closest_so_far = temp_rec.t
                 rec.t = temp_rec.t
