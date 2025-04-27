@@ -25,9 +25,10 @@ def main():
 
     # cam
     cam = Camera()
-    cam.aspect_ratio = 16.0 / 9.0
-    cam.img_width = 400
-    cam.samples_per_pixel = 100
+    cam.aspect_ratio        = 16.0 / 9.0
+    cam.img_width           = 400
+    cam.samples_per_pixel   = 100
+    cam.max_depth           = 50
     
     # render
     cam.render(world, filename)

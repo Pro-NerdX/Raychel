@@ -1,3 +1,8 @@
+import math
+import sys
+
+from utils.random_number_generator import random_float, random_float_range
+
 class Vec3:
 
     def __init__(self, x=0.0, y=0.0, z=0.0):
@@ -39,8 +44,31 @@ class Vec3:
     def length_squared(self):
         return self.x ** 2 + self.y ** 2 + self.z ** 2
     
+    def random():
+        return Vec3(random_float(), random_float(), random_float())
+    
+    def random_range(min_val: float, max_val: float):
+        return Vec3(random_float_range(min_val, max_val), random_float_range(min_val, max_val), random_float_range(min_val, max_val))
+
     def norm(self):
         return self / self.length()
+    
+    def random_norm():
+        while True:
+            p: Vec3 = Vec3.random_range(-1, 1)
+            lensq = p.length_squared()
+            if 1e-160 < lensq <= 1: # 1e - 160 == 1 x 10^(-160)
+                return p / math.sqrt(lensq)
+    
+    def random_on_hemisphere(normal):
+        if not isinstance(normal, Vec3):
+            print("Vec3.random_on_hemisphere: normal was not a Vec3.")
+            sys.exit(1)
+        
+        on_unit_sphere = Vec3.random_norm()
+        if (on_unit_sphere.dot(normal) > 0.0):
+            return on_unit_sphere
+        return on_unit_sphere * -1
     
     def __eq__(self, other):
         if not isinstance(other, Vec3):

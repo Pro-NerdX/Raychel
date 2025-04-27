@@ -14,9 +14,9 @@ python -m unittest tests. unittests
 
 ## Current State
 
-> Current: 8. Antialiasing (Ray Tracing In One Weekend)
+> Current: 9.3. Fixing Shadow Acne (Ray Tracing In One Weekend)
 
-> Upcoming: 9. Diffuse Materials (Ray Tracing In One Weekend)
+> Upcoming: 9.4. True Lambertian Reflection (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
 
