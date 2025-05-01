@@ -14,9 +14,9 @@ python -m unittest tests. unittests
 
 ## Current State
 
-> Current: 10.5. A Scene with Metal Spheres (Ray Tracing In One Weekend)
+> Current: 10. Metal (Ray Tracing In One Weekend)
 
-> Upcoming: 10.6. Fuzzy Reflections (Ray Tracing In One Weekend)
+> Upcoming: 11. Dielectrics (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
 
