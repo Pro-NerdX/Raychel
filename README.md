@@ -14,9 +14,9 @@ python -m unittest tests. unittests
 
 ## Current State
 
-> Current: 9. Diffuse Materials (Ray Tracing In One Weekend)
+> Current: 10.5. A Scene with Metal Spheres (Ray Tracing In One Weekend)
 
-> Upcoming: 10. Metal (Ray Tracing In One Weekend)
+> Upcoming: 10.6. Fuzzy Reflections (Ray Tracing In One Weekend)
 
 This is a python implementation of the project(s) from the book series [Ray Tracing In One Weekend](https://raytracing.github.io)
 
@@ -28,6 +28,10 @@ Inside the `renders <book>` directory, there are all renders from the book, made
 
 There are several renders with diffuse spheres. In this section, I'd like to talk about the differences between `diffuse-sphere-without-shadow-acne.ppm` (before) and `diffuse-lambertian-sphere.ppm` (after). The most obvious is the shadow, which is darker again. The book also claims that both spheres "are tinted blue from the sky" now, but I don't really see that much of a difference.
 
-### 9.5.
+### 9.5
 
 Inside the `renders` directory, there are 2 directories (both starting with `9.5`). Inside those are the renders at 10%, 30%, 50%, 70%, and 90% reflectance.
+
+### 10
+
+As the scene changes fundamentally, the renders from the sections of the first book past 9. will be in the `10` directory.

@@ -1,14 +1,18 @@
-from typing import List
+from typing import List, Optional, TYPE_CHECKING
 
 from utils.interval import Interval
 from utils.ray import Ray
 from utils.vec3 import Vec3
+
+if TYPE_CHECKING:
+    from materials.material import Material # avoid circular imports
 
 class HitRecord:
 
     def __init__(self, p = Vec3(), normal = Vec3(), t = 0.0, front_face = False):
         self.p = p
         self.normal = normal
+        self.material: Optional['Material'] = None
         self.t = t
         self.front_face = front_face
     
@@ -57,5 +61,7 @@ class HittableList(Hittable):
                 rec.t = temp_rec.t
                 rec.p = temp_rec.p
                 rec.normal = temp_rec.normal
+                # Fix: Not mentioned in the book!
+                rec.material = temp_rec.material
         
         return hit_anything

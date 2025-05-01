@@ -90,14 +90,21 @@ class Camera:
         """
         return Vec3(random_float() - 0.5, random_float() - 0.5, 0)
 
-    def ray_color(self, ray: Ray, depth: int,  world: Hittable):
+    def ray_color(self, ray: Ray, depth: int,  world: Hittable) -> Color:
         if (depth <= 0):
             return Vec3(0, 0, 0)
         rec = HitRecord()
 
         if (world.hit(ray, Interval(0.001, math.inf), rec)):
-            direction = rec.normal + Vec3.random_norm()
-            return self.ray_color(Ray(rec.p, direction), depth - 1, world) * 0.5 # factor was 0.5 before
+            if rec.material: # because rec.material is optional
+                did_scatter, attenuation, scattered = rec.material.scatter(ray, rec)
+                if did_scatter:
+                    return self.ray_color(scattered, depth - 1, world) * attenuation
+            return Color(0, 0, 0)
+        
+            # (Old code)
+            #direction = rec.normal + Vec3.random_norm()
+            #return self.ray_color(Ray(rec.p, direction), depth - 1, world) * 0.5 # factor was 0.5 before
             # TODO in section 9.5. of the book: Use 0.1, 0.3, 0.5, 0.7, and 0.9
         
         unit_direction = ray.dir.norm()
