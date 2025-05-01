@@ -97,7 +97,8 @@ class Camera:
 
         if (world.hit(ray, Interval(0.001, math.inf), rec)):
             direction = rec.normal + Vec3.random_norm()
-            return self.ray_color(Ray(rec.p, direction), depth - 1, world) * 0.5
+            return self.ray_color(Ray(rec.p, direction), depth - 1, world) * 0.5 # factor was 0.5 before
+            # TODO in section 9.5. of the book: Use 0.1, 0.3, 0.5, 0.7, and 0.9
         
         unit_direction = ray.dir.norm()
         a = 0.5 * (unit_direction.y + 1.0)
