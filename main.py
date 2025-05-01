@@ -1,11 +1,9 @@
 import sys
 
-from shapes.hittable import HitRecord, Hittable, HittableList
+from shapes.hittable import HittableList
 from shapes.sphere import Sphere
 
 from utils.camera import Camera
-from utils.interval import Interval
-from utils.ray import Ray
 from utils.vec3 import Vec3
 
 def main():

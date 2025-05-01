@@ -96,7 +96,7 @@ class Camera:
         rec = HitRecord()
 
         if (world.hit(ray, Interval(0.001, math.inf), rec)):
-            direction = Vec3.random_on_hemisphere(rec.normal)
+            direction = rec.normal + Vec3.random_norm()
             return self.ray_color(Ray(rec.p, direction), depth - 1, world) * 0.5
         
         unit_direction = ray.dir.norm()
