@@ -22,7 +22,7 @@ This is a python implementation of the project(s) from the book series [Ray Trac
 
 ## Renders
 
-Inside the `renders <book>` directory, there are all renders from the book, made by Raychel. As mentioned above, the file format is `.ppm`. `<book>` indicates, whether the renders are from the state of Raychel from the 1st, 2nd, or 3rd book.
+Inside the `renders (<book>)` directory, there are all renders from the book, made by Raychel. As mentioned above, the file format is `.ppm`. `<book>` indicates, whether the renders are from the state of Raychel from the 1st, 2nd, or 3rd book (Note: Currently there are no `renders (2)` and `renders (3)` directories as the current state of Raychel is still in the 1st book).
 
 ### Diffuse Spheres
 
